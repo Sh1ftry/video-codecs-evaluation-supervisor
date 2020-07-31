@@ -50,15 +50,11 @@ with open(logs_path, "a+") as logs:
             if encoder.config_path is not None:
                 process_args.append(encoder.config_path.absolute())
             encoder.results_path.mkdir(parents=True, exist_ok=True)
-            results_path = (encoder.results_path / data_root_path.name).with_suffix(
-                ".csv"
-            )
+            results_path = (encoder.results_path / data_root_path.name).with_suffix(".csv")
             processed_lines = count_lines(results_path)
             process_args.append(results_path.absolute())
             process_args.append(processed_lines)
             process_args_stringified = [str(arg) for arg in process_args]
             print(f"Launching subprocess {process_args_stringified}")
-            exit_code = subprocess.call(
-                process_args_stringified, stdout=logs, stderr=logs
-            )
+            exit_code = subprocess.call(process_args_stringified, stdout=logs, stderr=logs)
             print(f"{encoder.exe_path} subprocess exited with {exit_code}")
