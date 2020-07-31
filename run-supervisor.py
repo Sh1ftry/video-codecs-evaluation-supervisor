@@ -16,7 +16,7 @@ for data_root_path in data_root_paths:
 
 class Encoder:
     def __init__(self, name, config_path):
-        self.exe_path = Path(f"./{name}.sh").absolute()
+        self.exe_path = Path(f"./{name}.exe").absolute()
         self.results_path = results_root_path / name
         self.config_path = config_path
 
